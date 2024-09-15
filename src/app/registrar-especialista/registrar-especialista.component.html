@@ -1,0 +1,57 @@
+<div class="background">
+  <div class="header">
+    <div class="logo">INTELIGENCIA ARTIFICIAL</div>
+    <div class="header-center">
+      <marquee scrollamount="9px">
+        <h1>FISI-Ingeniería de Sistemas</h1>
+      </marquee>
+    </div>
+    <div class="unmsm-logo">
+      <img src="assets/unmsm.png" alt="user">
+      <span>UNMSM</span>
+    </div>
+  </div>
+  <div class="register-box">
+    <div class="register-header">
+      <h2>Registro de especialista</h2>
+    </div>
+    <form (ngSubmit)="onRegister()">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="formData.nombres" name="nombres" placeholder="Nombres" required>
+      </div>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="formData.apellidoPaterno" name="apellidoPaterno" placeholder="Apellido Paterno" required>
+      </div>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="formData.apellidoMaterno" name="apellidoMaterno" placeholder="Apellido Materno" required>
+      </div>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="formData.ubigeo" name="ubigeo" placeholder="Ubigeo" required>
+      </div>
+      <div class="input-group">
+        <select [(ngModel)]="formData.sexo" name="sexo" required>
+          <option value="" disabled selected>Seleccione Sexo</option>
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="formData.telefono" name="telefono" placeholder="Teléfono" required>
+      </div>
+      <div class="input-group">
+        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+        <input type="date" [(ngModel)]="formData.fechaNacimiento" name="fechaNacimiento" id="fechaNacimiento" required>
+      </div>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="formData.username" name="username" placeholder="Usuario" required>
+      </div>
+      <div class="input-group">
+        <input type="password" [(ngModel)]="formData.password" name="password" placeholder="Contraseña" required>
+      </div>
+      <div class="input-group">
+        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirmar contraseña" required>
+      </div>
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+</div>

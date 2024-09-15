@@ -1,0 +1,214 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif; /* Fuente más moderna */
+}
+
+/* Header styles */
+header {
+  background-color: #005C81;
+  padding: 15px;
+  color: white;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-center {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.header-left span,
+.header-right span {
+  font-size: 1.2rem;
+  margin-left: 10px;
+}
+
+.header-center marquee h1 {
+  font-size: 2rem;
+  color: white;
+  margin: 0;
+}
+
+header img {
+  width: 50px;
+  height: auto;
+}
+
+/* Estilos para títulos y descripciones */
+h2 {
+  font-size: 2.5rem; /* Tamaño mayor para un impacto visual */
+  color: #1B2A49;
+  text-align: center;
+  margin-top: 8rem; /* Margen superior ajustado para evitar que se superponga con el encabezado fijo */
+  font-weight: bold;
+}
+
+p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5; /* Espaciado entre líneas para mejorar la legibilidad */
+}
+
+/* Diseño del formulario */
+form {
+  max-width: 900px; /* Mayor ancho para mayor visibilidad */
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra para un efecto moderno */
+  margin-top: 3rem;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 20px;
+  display: block;
+  font-size: 1.2rem;
+}
+
+/* Mejora del estilo de los radio buttons */
+input[type="radio"] {
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+div {
+  margin-bottom: 20px; /* Mayor separación entre las preguntas */
+}
+
+input[type="radio"] {
+  display: none; /* Ocultamos los radio buttons originales */
+}
+
+input[type="radio"] + label {
+  background-color: #f1f1f1;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #005C81;
+  color: white;
+  border-color: #005C81;
+}
+
+/* Botones */
+button {
+  background-color: #005C81;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #004080;
+}
+
+/* Resultados del test */
+.resultados {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.resultados h3 {
+  font-size: 1.8rem;
+  color: #1B2A49;
+  margin-top: 1rem;
+}
+
+.resultados p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Diseño específico para recomendaciones */
+.recomendacion {
+  background-color: #f1f1f1;
+  border-left: 6px solid #005C81;
+  padding: 15px;
+  margin-top: 1rem;
+  border-radius: 8px;
+  white-space: pre-wrap; /* Respeta los saltos de línea en las recomendaciones */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  form {
+    padding: 15px;
+    margin-top: 4rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+  }
+
+  header img {
+    width: 40px;
+  }
+
+  .header-center marquee h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 10px;
+  }
+
+  header img {
+    width: 30px;
+  }
+
+  .header-center marquee h1 {
+    font-size: 1.2rem;
+  }
+}
+.recomendacion ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 10px;
+}
+
+.recomendacion li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}

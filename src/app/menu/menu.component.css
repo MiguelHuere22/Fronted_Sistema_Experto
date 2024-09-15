@@ -1,0 +1,300 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  width: 100vw;
+  overflow-x: hidden; /* Evitar scroll horizontal */
+  box-sizing: border-box; /* Asegurarse de que padding y border no causen desbordamiento */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw; /* Ocupar todo el ancho de la pantalla */
+  box-sizing: border-box; /* Evitar desbordamientos */
+}
+
+/* Estilos para el encabezado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #1B2A49; /* Color original que pediste */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-right img {
+  width: 50px;
+  height: auto;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+
+.header-left span, .header-right span {
+  font-size: 1.5rem;
+}
+
+/* Estilos para la sección principal con fondo degradado */
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem; /* Reducir padding vertical para subir las imágenes */
+  margin-top: 40px;  /* Reducir el margen superior para acercar las imágenes al encabezado */
+  width: 100vw;  
+  height: 100vh;  
+  background: linear-gradient(135deg, #1E9ACC 0%, #018BC1 50%, #005C81 100%);
+  color: white;
+  box-sizing: border-box;
+}
+
+.main-text {
+  width: 50%;
+}
+
+.main-text h2 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.main-text p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.start-test-button {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.main-image img {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: -220px; /* Ajusta este valor para mover la imagen más arriba */
+}
+
+/* Estilos para el carrusel */
+.carousel {
+  position: relative;
+  width: 600px;
+  height: auto;
+}
+
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out; /* Transición suave */
+}
+
+.carousel-image.active {
+  opacity: 1;
+}
+
+/* Sección de perfil con fondo celeste más oscuro */
+.profile-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #1b607f; /* Celeste oscuro */
+  color: white;
+  width: 100vw; /* Asegurarse de ocupar el 100% del ancho del viewport */
+  box-sizing: border-box;
+}
+
+.profile-section h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.profile-cards {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.card {
+  width: 200px;
+  text-align: center;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+}
+
+.card p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background-color: #020202;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  width: 100vw; /* Asegurarse de ocupar el ancho completo */
+  box-sizing: border-box;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1rem;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #ccc;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Encabezado con color modificado y sombra */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px; /* Ajustar padding para darle más espacio */
+  background-color: #005C81; /* Color que combina con el degradado inferior */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para profesionalismo */
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left span {
+  font-size: 1.8rem; /* Tamaño de fuente más grande */
+  font-weight: bold;
+  letter-spacing: 1px; /* Espaciado entre letras para darle un estilo elegante */
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-right img {
+  width: 50px;
+  height: auto;
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.header-right span {
+  font-size: 1.8rem; /* Mismo tamaño que el de la izquierda */
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Estilos del modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+}
+
+/* Modificación de la X */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: red; /* Color de fondo rojo */
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 50%; /* Para hacerlo circular */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background-color: darkred;
+}
+
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+}
+
+button.submit-btn {
+  background-color: #004080;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.submit-btn:hover {
+  background-color: #003366;
+}

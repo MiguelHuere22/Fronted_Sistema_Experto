@@ -1,0 +1,29 @@
+<div class="background">
+  <div class="header">
+    <div class="logo">INTELIGENCIA ARTIFICIAL</div>
+    <div class="unmsm-logo">
+      <img src="assets/unmsm.png" alt="UNMSM logo">
+      <span>UNMSM</span>
+    </div>
+  </div>
+  <div class="login-box">
+    <div class="user-icon">
+      <img src="assets/usuario.png" alt="user">
+    </div>
+    <h2>Especialista</h2>
+    <form (ngSubmit)="onLogin()">
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required>
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
+      </div>
+      <button type="submit">Login</button>
+      <div class="register-link">
+        <a routerLink="/registrar-especialista">¿No tienes cuenta? Regístrate</a>
+      </div>
+    </form>
+  </div>
+</div>

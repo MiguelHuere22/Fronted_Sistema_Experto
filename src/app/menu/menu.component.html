@@ -1,0 +1,70 @@
+<div class="container">
+  <header>
+    <div class="header-left">
+      <span>SISTEMAS INTELIGENTES</span>
+    </div>
+    <div class="header-center">
+      <marquee scrollAmount="9px">
+        <h1>FISI-Ingeniería de Sistemas</h1>
+      </marquee>
+    </div>
+    <div class="header-right">
+      <img src="assets/unmsm.png" alt="UNMSM Logo">
+      <span>UNMSM</span>
+    </div>
+  </header>
+
+  <!-- Sección principal con carrusel de imágenes -->
+  <div class="main-section">
+    <div class="main-text">
+      <h2>Descubre tu camino en la Ciencia de la Computación</h2>
+      <p>Realiza nuestro test vocacional y descubre cuál de las 15 ramas de la Ciencia de la Computación se adapta mejor a tus intereses y talentos.</p>
+      <button class="start-test-button" (click)="openModal()">Inicia el Test</button>
+    </div>
+    <div class="main-image">
+      <div class="carousel">
+        <img src="assets/HombreLaptop.png" alt="Hombre trabajando con laptop" class="carousel-image active">
+        <img src="assets/programacion.jpg" alt="Programación" class="carousel-image">
+        <img src="assets/ia.jpg" alt="Inteligencia Artificial" class="carousel-image">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para ingresar el nombre del usuario -->
+  <div class="modal" *ngIf="isModalVisible">
+    <div class="modal-content">
+      <!-- Botón de cerrar "X" en rojo y alineado a la derecha -->
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+      <h2>Bienvenido al Test Vocacional</h2>
+      <p>A continuación, digite su nombre:</p>
+      <!-- Aquí está el ngModel -->
+      <input type="text" [(ngModel)]="userName" placeholder="Ingrese su nombre completo" class="input-style">
+      <button class="submit-btn" (click)="submitName()">Siguiente</button>
+    </div>
+  </div>
+
+  <!-- Sección de perfil -->
+  <div class="profile-section">
+    <h3>Conoce tu perfil</h3>
+    <div class="profile-cards">
+      <div class="card">
+        <img src="assets/im1.png" alt="Programación y Desarrollo">
+        <p>Programación y Desarrollo</p>
+      </div>
+      <div class="card">
+        <img src="assets/im2.png" alt="Intereses y Preferencias">
+        <p>Intereses y Preferencias</p>
+      </div>
+      <div class="card">
+        <img src="assets/im3.png" alt="Habilidades Técnicas y Conocimientos">
+        <p>Habilidades Técnicas y Conocimientos</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="#">Términos y condiciones</a>
+    <p>Sistema Experto de orientación de ciencias de la computación de la UNMSM</p>
+    <p>2024</p>
+  </footer>
+</div>

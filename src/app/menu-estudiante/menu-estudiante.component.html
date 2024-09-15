@@ -1,0 +1,58 @@
+<div class="container">
+  <!-- Encabezado común para todo el proceso -->
+  <header>
+    <div class="header-left">
+      <span>SISTEMAS INTELIGENTES</span>
+    </div>
+    <div class="header-center">
+      <marquee scrollAmount="9px">
+        <h1>FISI-Ingeniería de Sistemas</h1>
+      </marquee>
+    </div>
+    <div class="header-right">
+      <img src="/assets/unmsm.png" alt="UNMSM Logo">
+      <span>UNMSM</span>
+    </div>
+  </header>
+
+  <!-- Mostrar el nombre del usuario antes de empezar el cuestionario -->
+  <div *ngIf="!resultadosMostrados">
+    <h2>{{ obtenerTituloSeccion() }}</h2>
+    <p>{{ obtenerDescripcionSeccion() }}</p>
+
+    <form>
+      <!-- Preguntas dinámicas de la sección con numeración acumulativa -->
+      <div *ngFor="let pregunta of seccionPreguntas; let i = index">
+        <label>{{ obtenerNumeroPregunta(i) }}. {{ pregunta.descripcion }}</label> <!-- Enumerar preguntas acumulativamente -->
+        <div>
+          <input type="radio" id="pregunta{{i}}_si" name="pregunta{{ i }}" [(ngModel)]="respuestas[pregunta.codigo]" [value]="'si'" />
+          <label for="pregunta{{i}}_si">Sí</label>
+          
+          <input type="radio" id="pregunta{{i}}_no" name="pregunta{{ i }}" [(ngModel)]="respuestas[pregunta.codigo]" [value]="'no'" />
+          <label for="pregunta{{i}}_no">No</label>
+        </div>
+      </div>
+
+      <!-- Botón de siguiente sección o enviar -->
+      <button *ngIf="seccionActual < 3" type="button" (click)="siguienteSeccion()">Siguiente Sección</button>
+      <button *ngIf="seccionActual === 3" type="button" (click)="enviarCuestionario()">Enviar Cuestionario</button>
+    </form>
+  </div>
+
+  <!-- Resultados: Se muestran después de enviar el cuestionario -->
+  <div *ngIf="resultadosMostrados">
+    <h2>Resultados del Test Vocacional para {{ userName }}</h2> <!-- Muestra el nombre del usuario en los resultados -->
+    <p>Basado en tus respuestas, el sistema recomienda las siguientes especialidades:</p>
+
+    <div *ngFor="let especialidad of recomendaciones.especialidades" class="resultados">
+      <h3>{{ especialidad }}</h3>
+      <p>{{ recomendaciones.descripciones[especialidad] }}</p>
+      <div class="recomendacion">
+        <strong>Recomendación personalizada:</strong><br>
+        {{ recomendaciones.recomendaciones_detalladas[especialidad] }}
+      </div>
+    </div>
+
+    <button (click)="reiniciarTest()">Volver al Inicio</button>
+  </div>
+</div>

@@ -1,0 +1,244 @@
+<div class="menu-especialista">
+  <div class="header-bar">
+    <div class="header-content">
+      <div class="title">
+        <h1>INTELIGENCIA ARTIFICIAL</h1>
+      </div>
+      <div class="header-center">
+        <marquee scrollamount="9px">
+          <h1>FISI-Ingeniería de Sistemas</h1>
+        </marquee>
+      </div>
+      <div class="logo">
+        <img src="/assets/unmsm.png" alt="UNMSM Logo">
+        <span>UNMSM</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="sidebar">
+      <div class="user-info">
+        <div class="user-icon">
+          <img src="/assets/usuario.png" alt="User Icon">
+        </div>
+        <div class="user-details">
+          <p>{{ nombres }} {{ apellidoPaterno }} {{ apellidoMaterno }}</p>
+        </div>
+      </div>
+      <ul class="menu-options">
+        <li><a href="#" (click)="selectOption('inicio'); $event.preventDefault();">Inicio</a></li>
+        <li><a href="#" (click)="selectOption('actualizar-perfil'); $event.preventDefault();">Actualizar perfil</a></li>
+        <li><a href="#" (click)="selectOption('consulta'); $event.preventDefault();">Consulta</a></li>
+      </ul>
+      <div class="logout">
+        <a href="#" (click)="logout()">Cerrar sesión</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div *ngIf="selectedOption === 'inicio'">
+        <div class="welcome-content">
+          <div class="info-box">
+            <div class="info-header">
+              Mi Información
+            </div>
+            <div class="info-content">
+              <div class="info-details">
+                <div class="info-item"><strong>Nombre:</strong> {{ nombres }}</div>
+                <div class="info-item"><strong>Apellidos:</strong> {{ apellidoPaterno }} {{ apellidoMaterno }}</div>
+                <div class="info-item"><strong>Sexo:</strong> {{ sexo }}</div>
+                <div class="info-item"><strong>Teléfono:</strong> {{ telefono }}</div>
+                <div class="info-item"><strong>Departamento:</strong> {{ departamento }}</div>
+                <div class="info-item"><strong>Provincia:</strong> {{ provincia }}</div>
+                <div class="info-item"><strong>Distrito:</strong> {{ distrito }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="action-item">
+            <p>Actualizar perfil</p>
+            <img src="/assets/actualizar.png" alt="Actualizar perfil"> 
+          </div>
+          <div class="action-item">
+            <p>Consulta</p>
+            <img src="/assets/consulta.png" alt="Consulta">
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedOption === 'actualizar-perfil'">
+        <h2>Actualizar perfil</h2>
+        <!-- Contenido para actualizar perfil -->
+      </div>
+
+      <div *ngIf="selectedOption === 'consulta'" class="consulta">
+        <h2>Consulta</h2>
+        <div class="filter-container">
+          <div class="filter-item">
+            <label for="tipoTest">Tipo de Test:</label>
+            <select id="tipoTest" [(ngModel)]="filtroTipoTest" (change)="filtrarPuntuaciones()">
+              <option value="">Todos</option>
+              <option value="Test de Beck">Test de Beck</option>
+              <option value="Test de Zung">Test de Zung</option>
+              <option value="Test de AMASC">Test de AMASC</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <label for="fechaInicio">Fecha Inicio:</label>
+            <input type="date" id="fechaInicio" [(ngModel)]="filtroFechaInicio" (change)="filtrarPuntuaciones()">
+          </div>
+          <div class="filter-item">
+            <label for="fechaFin">Fecha Fin:</label>
+            <input type="date" id="fechaFin" [(ngModel)]="filtroFechaFin" (change)="filtrarPuntuaciones()">
+          </div>
+          <div class="filter-item">
+            <label for="nivelAnsiedad">Nivel de Ansiedad:</label>
+            <select id="nivelAnsiedad" [(ngModel)]="filtroNivelAnsiedad" (change)="filtrarPuntuaciones()">
+              <option value="">Todos</option>
+              <option value="verde">Verde</option>
+              <option value="ambar">Ámbar</option>
+              <option value="rojo">Rojo</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th (click)="ordenarPor('nombre')">Nombre &#x25B2;&#x25BC;</th>
+                <th (click)="ordenarPor('apellidos')">Apellidos &#x25B2;&#x25BC;</th>
+                <th (click)="ordenarPor('tipo_test')">Tipo de test &#x25B2;&#x25BC;</th>
+                <th (click)="ordenarPor('fecha')">Fecha &#x25B2;&#x25BC;</th>
+                <th (click)="ordenarPor('puntaje_total')">Puntaje &#x25B2;&#x25BC;</th>
+                <th (click)="ordenarPor('calificacion')">Calificación &#x25B2;&#x25BC;</th>
+                <th>Semáforo</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let puntuacion of puntuacionesFiltradas; let i = index" (click)="selectPuntuacion(puntuacion)" [class.selected]="puntuacion === selectedPuntuacion">
+                <td>{{ i + 1 }}</td>
+                <td>{{ puntuacion.nombre }}</td>
+                <td>{{ puntuacion.apellido_paterno }} {{ puntuacion.apellido_materno }}</td>
+                <td>{{ puntuacion.tipo_test }}</td>
+                <td>{{ puntuacion.fecha.split(' ')[0] }}</td>
+                <td>{{ puntuacion.puntaje_total }}</td>
+                <td>{{ puntuacion.calificacion }}</td>
+                <td>
+                  <div class="semaforo" [ngClass]="{
+                    'verde': puntuacion.color === 'verde',
+                    'ambar': puntuacion.color === 'ambar',
+                    'rojo': puntuacion.color === 'rojo'
+                  }"></div>
+                </td>
+                <td>{{ puntuacion.estado }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button [disabled]="!selectedPuntuacion" (click)="evaluar()" class="eval-button">Evaluar</button>
+        </div>
+
+        <div class="filter-container">
+          <div class="filter-item">
+            <label for="tipoTestMapa">Tipo de Test (Mapa):</label>
+            <select id="tipoTestMapa" [(ngModel)]="filtroMapaTipoTest" (change)="filtrarPuntuacionesMapa()">
+              <option value="">Todos</option>
+              <option value="Test de Beck">Test de Beck</option>
+              <option value="Test de Zung">Test de Zung</option>
+              <option value="Test de AMASC">Test de AMASC</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <label for="fechaMapaInicio">Fecha Inicio (Mapa):</label>
+            <input type="date" id="fechaMapaInicio" [(ngModel)]="filtroMapaFechaInicio" (change)="filtrarPuntuacionesMapa()">
+          </div>
+          <div class="filter-item">
+            <label for="fechaMapaFin">Fecha Fin (Mapa):</label>
+            <input type="date" id="fechaMapaFin" [(ngModel)]="filtroMapaFechaFin" (change)="filtrarPuntuacionesMapa()">
+          </div>
+          <div class="filter-item">
+            <label for="nivelAnsiedadMapa">Nivel de Ansiedad (Mapa):</label>
+            <select id="nivelAnsiedadMapa" [(ngModel)]="filtroMapaNivelAnsiedad" (change)="filtrarPuntuacionesMapa()">
+              <option value="">Todos</option>
+              <option value="verde">Verde</option>
+              <option value="ambar">Ámbar</option>
+              <option value="rojo">Rojo</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="heatmap" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+      </div>
+
+      <div *ngIf="selectedOption === 'evaluar'" class="evaluar">
+        <h2>Evaluar Resultados Test</h2>
+        <div class="evaluation-container">
+          <div class="evaluation-section">
+            <div class="section1">
+              <p><strong>Nombre:</strong> {{ selectedPuntuacion.nombre }}</p>
+              <p><strong>Apellidos:</strong> {{ selectedPuntuacion.apellido_paterno }} {{ selectedPuntuacion.apellido_materno }}</p>
+              <p><strong>Tipo de test:</strong> {{ selectedPuntuacion.tipo_test }}</p>
+              <p><strong>Puntaje:</strong> {{ selectedPuntuacion.puntaje_total }}</p>
+              <p><strong>Calificación:</strong> {{ selectedPuntuacion.calificacion }}</p>
+              <p><strong>Fecha:</strong> {{ selectedPuntuacion.fecha.split(' ')[0] }}</p>
+            </div>
+          </div>
+          <div class="section2">
+            <h3>Preguntas y Respuestas del Test</h3>
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Pregunta</th>
+                  <th>Respuesta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let pregunta of preguntas">
+                  <td>{{ pregunta.pregunta }}</td>
+                  <td>{{ pregunta.respuesta }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="section3">
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" [(ngModel)]="observacionesTexto"></textarea>
+
+            <label for="nivelAnsiedad">Diagnóstico (Nivel de ansiedad):</label>
+            <select id="nivelAnsiedad" [(ngModel)]="nivelAnsiedad" (change)="mostrarFundamentacionCientifica($event)">
+              <option *ngFor="let nivel of nivelesAnsiedad" [value]="nivel.descripcion">{{ nivel.descripcion }}</option>
+            </select>
+
+            <label for="fundamentacionCientifica">Fundamentación Científica:</label>
+            <textarea id="fundamentacionCientifica" [(ngModel)]="fundamentacionCientifica" readonly></textarea>
+
+            <label for="solicitudCita">Invitar a una Cita:</label>
+            <select id="solicitudCita" [(ngModel)]="solicitudCita">
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+            </select>
+
+            <label for="tratamiento">Tratamiento:</label>
+            <input type="text" id="tratamientoBusqueda" [(ngModel)]="tratamientoBusqueda" (input)="filtrarTratamientos()" placeholder="Buscar tratamiento...">
+            <div id="tratamiento" class="tratamiento-container">
+              <div 
+                *ngFor="let recomendacion of tratamientosFiltrados" 
+                class="tratamiento-option" 
+                [ngClass]="{'selected': tratamiento.includes(recomendacion.descripcion)}"
+                (click)="toggleTratamiento(recomendacion.descripcion)"
+              >
+                {{ recomendacion.descripcion }}
+              </div>
+            </div>
+
+            <button (click)="guardarObservacion()">Registrar</button>
+            <button (click)="enviarCorreo()">Notificar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
