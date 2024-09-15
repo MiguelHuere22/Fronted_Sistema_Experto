@@ -37,7 +37,7 @@ export class MenuEstudianteComponent implements OnInit {
 
   // Cargar todas las preguntas desde el backend
   cargarPreguntas(): void {
-    this.http.get('hhttps://backend-sistema-experto.onrender.com/pregunta').subscribe(
+    this.http.get('https://backend-sistema-experto.onrender.com/pregunta').subscribe(
       (response: any) => {
         console.log(response.data); // Verificar si las preguntas llegan correctamente
         this.preguntas = response.data;
